@@ -1,11 +1,18 @@
 import CreatePostForm from "../components/CreatePostForm";
+import { useNavigate } from "react-router-dom";
 
 function CreatePostPage() {
+  const navigate = useNavigate();
+
+  const handleCreateButtonClick = () => {
+    navigate("/");
+  };
+
   return (
     <div>
-      <h1>Create Post Page</h1>
+      <h1 onClick={handleCreateButtonClick}>Create Post Page</h1>
       <CreatePostForm />
-      <button>Back to Home</button>
+      <button onClick={() => navigate("/")}>Back to Home</button>
     </div>
   );
 }

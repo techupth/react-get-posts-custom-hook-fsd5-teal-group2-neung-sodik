@@ -1,13 +1,31 @@
-import EditPostForm from "../components/EditPostForm";
+import { useNavigate } from "react-router-dom";
+import CreatePostForm from "../components/CreatePostForm";
+import axios from "axios";
 
-function EditPostPage() {
+function CreatePostPage() {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e, formData) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/posts",
+        formData
+      );
+      console.log("Post created:", response.data);
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
   return (
     <div>
-      <h1>Edit Post Page</h1>
-      <EditPostForm />
-      <button>Back to Home</button>
+      <h1>Create Post Page</h1>
+      <CreatePostForm handleSubmit={handleSubmit} />
+      <button onClick={() => navigate("/")}>Back to Home</button>
     </div>
   );
 }
 
-export default EditPostPage;
+export default CreatePostPage;
