@@ -4,6 +4,7 @@ import EditPostPage from "./pages/EditPostPage";
 import HomePage from "./pages/HomePage";
 import ViewPostPage from "./pages/ViewPostPage";
 import "./App.css";
+import React from "react";
 
 function App() {
   return (
